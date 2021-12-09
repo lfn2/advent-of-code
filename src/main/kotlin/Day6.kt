@@ -31,7 +31,7 @@ object Day6 {
     fun simulate(input: List<Int>, days: Int): Long {
         var currentState = input.groupingBy { it }.eachCount().mapValues { it.value.toLong() }
 
-        for (day in 1..days) {
+        repeat(days) {
             currentState = nextState(currentState)
         }
 
