@@ -1,6 +1,9 @@
 import java.io.File
+import kotlin.system.measureTimeMillis
+import kotlin.time.measureTime
 
-typealias Grid = MutableMap<Int, MutableMap<Int, Int>>
+//typealias Grid = MutableMap<Int, MutableMap<Int, Int>>
+typealias Grid = MutableMap<Day5.Coordinate, Int>
 
 object Day5 {
     data class Coordinate(
@@ -37,28 +40,25 @@ object Day5 {
 
             var x = it.start.x
             var y = it.start.y
-
-            while(x != it.end.x || y != it.end.y) {
-                this.putIfAbsent(x, mutableMapOf())
-                this[x]!!.merge(y, 1, Integer::sum)
+            while (x != it.end.x || y != it.end.y) {
+                val coordinate = Coordinate(x, y)
+                this.merge(coordinate, 1, Integer::sum)
 
                 x += xAcc
                 y += yAcc
             }
 
-            this.putIfAbsent(x, mutableMapOf())
-            this[x]!!.merge(y, 1, Integer::sum)
+            val coordinate = Coordinate(x, y)
+            this.merge(coordinate, 1, Integer::sum)
         }
     }
 
     private fun Grid.countOverlaps(): Int {
-        return this.values.fold(0) { sum, inner ->
-            sum + inner.filter { it.value >= 2 }.size
-        }
+        return this.values.filter { it > 2 }.sum()
     }
 
     private fun countOverlaps(lines: List<Line>): Int {
-        val grid = mutableMapOf<Int, MutableMap<Int, Int>>()
+        val grid = mutableMapOf<Coordinate, Int>()
 
         grid.mark(lines)
         return grid.countOverlaps()
