@@ -1,8 +1,10 @@
+package y2021
+
 import java.io.File
 
 fun main() {
     fun readResource(): List<String> {
-        return File({}.javaClass.getResource("/day3")!!.toURI()).readLines()
+        return File({}.javaClass.getResource("/y2021/day3")!!.toURI()).readLines()
     }
 
     fun findMostCommonBit(numbers: List<String>, position: Int): Char {

@@ -1,9 +1,17 @@
+package y2021
+
 import java.io.File
-import kotlin.system.measureTimeMillis
+
+fun main() {
+    val initialState = Day6.parseInput()
+
+    println(Day6.simulate(initialState, 80))
+    println(Day6.simulate(initialState, 256))
+}
 
 object Day6 {
     fun parseInput(): List<Int> {
-        val input = File({}.javaClass.getResource("/day6")!!.toURI()).readText()
+        val input = File({}.javaClass.getResource("/y2021/day6")!!.toURI()).readText()
 
         return input
             .split(',')
@@ -37,11 +45,4 @@ object Day6 {
 
         return currentState.values.sum()
     }
-}
-
-fun main() {
-    val initialState = Day6.parseInput()
-
-    println(Day6.simulate(initialState, 80))
-    println(Day6.simulate(initialState, 256))
 }

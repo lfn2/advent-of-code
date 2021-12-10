@@ -1,4 +1,13 @@
+package y2021
+
 import java.io.File
+
+fun main() {
+    val input = File({}.javaClass.getResource("/y2021/day4")!!.toURI()).readLines()
+
+    println(Day4.findBoardScores(input).first())
+    println(Day4.findBoardScores(input).last())
+}
 
 typealias Board = List<List<BoardCell>>
 
@@ -70,11 +79,4 @@ object Day4 {
 
         return winnerScores
     }
-}
-
-fun main() {
-    val input = File({}.javaClass.getResource("/day4")!!.toURI()).readLines()
-
-    println(Day4.findBoardScores(input).first())
-    println(Day4.findBoardScores(input).last())
 }

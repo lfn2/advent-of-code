@@ -1,8 +1,10 @@
+package y2021
+
 import java.io.File
 
 fun main() {
     fun parseInput(): List<Movement> {
-        val inputLines = File({}.javaClass.getResource("/day2")!!.toURI()).readLines()
+        val inputLines = File({}.javaClass.getResource("/y2021/day2")!!.toURI()).readLines()
 
         return inputLines.map {
             val (direction, distance) = it.split(' ')

@@ -1,8 +1,12 @@
-import java.io.File
-import kotlin.system.measureTimeMillis
-import kotlin.time.measureTime
+package y2021
 
-//typealias Grid = MutableMap<Int, MutableMap<Int, Int>>
+import java.io.File
+
+fun main() {
+    Day5.part1()
+    Day5.part2()
+}
+
 typealias Grid = MutableMap<Day5.Coordinate, Int>
 
 object Day5 {
@@ -17,7 +21,7 @@ object Day5 {
     )
 
     private fun parseInput(): List<Line> {
-        val input = File({}.javaClass.getResource("/day5")!!.toURI()).readLines()
+        val input = File({}.javaClass.getResource("/y2021/day5")!!.toURI()).readLines()
 
         return input.map { lineString ->
             val (start, end) = lineString
@@ -73,9 +77,4 @@ object Day5 {
         val lines = parseInput()
         println(countOverlaps(lines))
     }
-}
-
-fun main() {
-    Day5.part1()
-    Day5.part2()
 }

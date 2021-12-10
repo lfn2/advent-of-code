@@ -1,4 +1,11 @@
+package y2021
+
 import java.io.File
+
+fun main() {
+    Day8.part1()
+    Day8.part2()
+}
 
 object Day8 {
 
@@ -8,7 +15,7 @@ object Day8 {
     )
 
     private fun parseOutputValues(): List<String> {
-        val input = File({}.javaClass.getResource("/day8")!!.toURI()).readLines().filter { it.isNotBlank() }
+        val input = File({}.javaClass.getResource("/y2021/day8")!!.toURI()).readLines().filter { it.isNotBlank() }
 
         return input
             .map { it.split('|')[1].trim() }
@@ -18,7 +25,7 @@ object Day8 {
     }
 
     private fun parseEntries(): List<Entry> {
-        val input = File({}.javaClass.getResource("/day8")!!.toURI()).readLines().filter { it.isNotBlank() }
+        val input = File({}.javaClass.getResource("/y2021/day8")!!.toURI()).readLines().filter { it.isNotBlank() }
 
         return input.map { line ->
             val (patterns, outputValues) = line.split('|')
@@ -133,11 +140,6 @@ object Day8 {
 
     fun part2() {
         val entries = parseEntries()
-        println(findOutputValuesSum(entries))
+        println("part2: ${findOutputValuesSum(entries)}")
     }
-}
-
-fun main() {
-    Day8.part1()
-    Day8.part2()
 }

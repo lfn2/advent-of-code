@@ -1,11 +1,20 @@
+package y2021
+
 import java.io.File
 import kotlin.math.abs
-import kotlin.math.max
 import kotlin.math.min
+
+fun main() {
+    val positions = Day7.parseInput()
+
+    println(Day7.part1(positions))
+    println(Day7.part2(positions))
+}
+
 
 object Day7 {
     fun parseInput(): List<Int> {
-        val input = File({}.javaClass.getResource("/day7")!!.toURI()).readText()
+        val input = File({}.javaClass.getResource("/y2021/day7")!!.toURI()).readText()
 
         return input
             .split(',')
@@ -43,11 +52,4 @@ object Day7 {
     fun part2(positions: List<Int>): Int {
         return align(positions, ::fuelCalculator2)
     }
-}
-
-fun main() {
-    val positions = Day7.parseInput()
-
-    println(Day7.part1(positions))
-    println(Day7.part2(positions))
 }
